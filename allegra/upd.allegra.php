@@ -45,7 +45,42 @@ class Allegra_upd {
 		
 		$data = array(
 		    'class'     => 'Allegra' ,
-		    'method'    => 'allegra_transaction'
+		    'method'    => 'allegra_form'
+		);
+
+		ee()->db->insert('actions', $data);
+		
+		$data = array(
+		    'class'     => 'Allegra' ,
+		    'method'    => 'allegra_create_transaction'
+		);
+
+		ee()->db->insert('actions', $data);
+		
+		$data = array(
+		    'class'     => 'Allegra' ,
+		    'method'    => 'allegra_edit_transaction'
+		);
+
+		ee()->db->insert('actions', $data);
+		
+		$data = array(
+		    'class'     => 'Allegra' ,
+		    'method'    => 'allegra_search_transaction'
+		);
+
+		ee()->db->insert('actions', $data);
+		
+		$data = array(
+		    'class'     => 'Allegra' ,
+		    'method'    => 'allegra_create_profile'
+		);
+		
+		ee()->db->insert('actions', $data);
+		
+		$data = array(
+		    'class'     => 'Allegra' ,
+		    'method'    => 'allegra_edit_profile'
 		);
 
 		ee()->db->insert('actions', $data);
@@ -244,7 +279,7 @@ class Allegra_upd {
 		        'req_reference_number' => array(
 		                'type' => 'INT',
 		                'constraint' => '50',
-						'null' => TRUE,
+						'null' => FALSE,
 		        ),
 		        'req_transaction_uuid' => array(
 		                'type' => 'VARCHAR',
@@ -269,7 +304,7 @@ class Allegra_upd {
 		        'transaction_id' => array(
 		                'type' => 'VARCHAR',
 		                'constraint' => '50',
-						'null' => TRUE,
+						'null' => FALSE,
 		        ),
 		        'req_item_#_code' => array(
 		                'type' => 'INT',
@@ -311,6 +346,11 @@ class Allegra_upd {
 					'constraint' => '1',
 					'default' => '1',
 	        ),
+	        'merchant_url' => array(
+	                'type' => 'VARCHAR',
+					'constraint' => '150',
+					'null' => FALSE,
+	        ),
 	        'profile_id' => array(
 	                'type' => 'VARCHAR',
 					'constraint' => '50',
@@ -323,7 +363,7 @@ class Allegra_upd {
 	        ),
 	        'secret_key' => array(
 	                'type' => 'VARCHAR',
-					'constraint' => '50',
+					'constraint' => '300',
 					'null' => FALSE,
 	        ),
 		);
@@ -375,9 +415,11 @@ class Allegra_upd {
 	            'visible'   => 'true',
 	            'collapse'  => 'false',
 	            'htmlbuttons'   => 'false',
-	            'width'     => '100%'
+	            'width'     => '100%',
 	        )
 	    );
 
 	    return $tabs;
 	}
+}
+/* END Class */
