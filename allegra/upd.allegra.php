@@ -338,41 +338,6 @@ class Allegra_upd {
 
 		ee()->dbforge->create_table('allegra_response');
 		
-		unset($fields);
-		
-		$fields = array(
-	        'merchant_id' => array(
-	                'type' => 'int',
-					'constraint' => '1',
-					'default' => '1',
-	        ),
-	        'merchant_url' => array(
-	                'type' => 'VARCHAR',
-					'constraint' => '150',
-					'null' => FALSE,
-	        ),
-	        'profile_id' => array(
-	                'type' => 'VARCHAR',
-					'constraint' => '50',
-					'null' => FALSE,
-	        ),
-	        'access_key' => array(
-	                'type' => 'VARCHAR',
-					'constraint' => '50',
-					'null' => FALSE,
-	        ),
-	        'secret_key' => array(
-	                'type' => 'VARCHAR',
-					'constraint' => '300',
-					'null' => FALSE,
-	        ),
-		);
-		
-		ee()->dbforge->add_field($fields);
-		ee()->dbforge->add_key('merchant_id', TRUE);
-
-		ee()->dbforge->create_table('allegra_profile');
-		
 		ee()->load->library('layout');
 		    ee()->layout->add_layout_tabs($this->tabs(), 'allegra');
 

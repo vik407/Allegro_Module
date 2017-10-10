@@ -31,7 +31,10 @@ $lang = array(
 "allegra_module_description" 	=> 'Integrate the Allegra Platform integration to payments', 
 'allegra_config' 				=> 'Module Configuration',
 'edit_transaction' 				=> 'Editar Transacción',
-'delete_transaction' 				=> 'Eliminar Transacción',
+'delete_transaction' 			=> 'Eliminar Transacción',
+'allegra_checkout_id'			=> 'Transacción ID',
+'allegra_date'					=> 'Fecha transacción en sitio',
+'allegra_event'					=> 'Nombre del evento',
 //
 ''=>''
 );

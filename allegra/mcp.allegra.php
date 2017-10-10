@@ -24,21 +24,21 @@ Except as contained in this notice, the name of EllisLab, Inc. shall not be
 used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from EllisLab, Inc.
 */
-
 class Allegra_mcp {
+	var $perpage = 30;
+		
 	function __construct()
 	{
 	    ee()->cp->set_right_nav(array(
 	        'Transactions'  => BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'
 	            .AMP.'module=allegra'.AMP.'method=allegra_browse',
-	        'Configuration'  => BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'
-	            .AMP.'module=allegra'.AMP.'method=allegra_config',
-	        'Allegra Platform'  => 'https://allegra.global/plataforma/index.html',
+	        'Allegra Platform'  => 'https://allegraplatform.com/AllegraPlatform/faces/login.xhtml',
 	    ));
 	}
 	
 	function index()
 	{
+		ee()->load->config('allegra');
 	    ee()->load->library('javascript');
 	    ee()->load->library('table');
 	    ee()->load->helper('form');
@@ -77,7 +77,32 @@ class Allegra_mcp {
 			
 		ee()->javascript->compile();
 		
+		//  Check for pagination
+		$total = ee()->db->count_all('allegra_transaction');
 		
+		if ( ! $rownum = ee()->input->get_post('rownum'))
+		{
+		    $rownum = 0;
+		}
+
+		ee()->db->order_by("allegra_id", "desc");
+		$query = ee()->db->get('allegra_transaction', $this->perpage, $rownum);
+		
+		foreach($query->result_array() as $row)
+		{
+			$vars['transactions'][$row['allegra_id']]['allegra_checkout_id'] = $row['allegra_checkout_id'];
+			$vars['transactions'][$row['allegra_id']]['allegra_date'] = $row['allegra_date'];
+			$vars['transactions'][$row['allegra_id']]['allegra_event'] = ee()->config->item('site_url').ee()->config->item('product_template').'/'.$row['allegra_event'];
+			$vars['transactions'][$row['allegra_id']]['edit_link'] = BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra'.AMP.'method=edit_transaction'.AMP.'transaction_id='.$row['allegra_id'];
+			// Toggle checkbox
+			$vars['transactions'][$row['allegra_id']]['toggle'] = array(
+															'name'		=> 'toggle[]',
+															'id'		=> 'edit_box_'.$row['allegra_id'],
+															'value'		=> $row['allegra_id'],
+															'class'		=>'toggle'
+															);
+			
+		}
 		
 		
 		return ee()->load->view('index', $vars, TRUE);

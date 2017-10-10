@@ -27,3 +27,25 @@ in this Software without prior written authorization from Nullun, SAS.
 <div class="moduleHeader">
 	<a href="https://allegra.global/plataforma/index.html"><img src="https://allegra.global/plataforma/images/logo-alegra.png" alt="allegra platform enterprises" width="160"/></a>
 </div>
+
+<?php
+	$this->table->set_template($cp_table_template);
+	$this->table->set_heading(
+		lang('allegra_checkout_id'),
+		lang('allegra_date'),
+		lang('allegra_event'),
+		form_checkbox('select_all', 'true', FALSE, 'class="toggle_all" id="select_all"'));
+
+	foreach($transactions as $transaction)
+	{
+		$this->table->add_row(
+				'<a href="'.$transaction['edit_link'].'">'.$transaction['allegra_checkout_id'].'</a>',
+				$transaction['allegra_date'],
+				'<a href="'.$transaction['allegra_event'].'" target="_blank">'.$transaction['allegra_event'].'</a>',
+				form_checkbox($transaction['toggle'])
+			);
+	}
+
+echo $this->table->generate();
+
+?>
