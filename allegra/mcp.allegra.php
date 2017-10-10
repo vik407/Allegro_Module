@@ -84,7 +84,7 @@ class Allegra_mcp {
 		{
 		    $rownum = 0;
 		}
-		$query = ee()->db->select('t.allegra_id, t.allegra_date, t.allegra_quantity, t.allegra_price, c.title,	c.url_title, m.screen_name,	m.email, r.desicion')
+		$query = ee()->db->select('t.allegra_id, t.allegra_date, t.allegra_quantity, t.allegra_price, c.title,	c.url_title, m.member_id, m.screen_name, m.email, r.desicion, r.req_amount')
 		    ->from('allegra_response r')
 			->join('allegra_transaction t', 'r.req_reference_number = t.allegra_id', 'right')
 			->join('channel_titles c', 't.allegra_event = c.entry_id', 'left')
@@ -97,8 +97,15 @@ class Allegra_mcp {
 		foreach($query->result_array() as $row)
 		{
 			$vars['transactions'][$row['allegra_id']]['allegra_id'] = $row['allegra_id'];
+			$vars['transactions'][$row['allegra_id']]['screen_name_url'] = ee()->config->item('site_url').'member/'.$row['member_id'];
+			$vars['transactions'][$row['allegra_id']]['screen_name'] = $row['screen_name'];
+			$vars['transactions'][$row['allegra_id']]['title'] = $row['title'];
+			$vars['transactions'][$row['allegra_id']]['allegra_price'] = $row['allegra_price'];
+			$vars['transactions'][$row['allegra_id']]['allegra_price_reported'] = $row['req_amount'];
+			$vars['transactions'][$row['allegra_id']]['allegra_quantity'] = $row['allegra_quantity'];
 			$vars['transactions'][$row['allegra_id']]['allegra_date'] = $row['allegra_date'];
 			$vars['transactions'][$row['allegra_id']]['title'] = $row['title'];
+			$vars['transactions'][$row['allegra_id']]['desicion'] = $row['desicion'];
 			$vars['transactions'][$row['allegra_id']]['url_title'] = ee()->config->item('site_url').ee()->config->item('product_template').'/'.$row['url_title'];
 			$vars['transactions'][$row['allegra_id']]['edit_link'] = BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra'.AMP.'method=edit_transaction'.AMP.'transaction_id='.$row['allegra_id'];
 			// Toggle checkbox

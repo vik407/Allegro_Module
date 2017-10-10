@@ -32,13 +32,16 @@ $lang = array(
 'allegra_config' 				=> 'Module Configuration',
 'edit_transaction' 				=> 'Editar Transacción',
 'delete_transaction' 			=> 'Eliminar Transacción',
-'allegra_checkout_id'			=> '#',
+'allegra_id'					=> '#',
 'allegra_date'					=> 'Fecha Transacción',
-'allegra_member'				=> 'Usuario',
+'allegra_screen_name'			=> 'Usuario',
 'allegra_event'					=> 'Evento',
-'allegra_tickets'				=> 'Tiquetes',
-'allegra_ammount'				=> 'Costo',
-'allegra_state'					=> 'Estado Transacción',
+'allegra_quantity'				=> 'Tiquetes',
+'allegra_price'					=> 'Costo x tiquete',
+'allegra_price_reported'		=> 'Costo pagado',
+'allegra_price_reported_null'	=> 'No reportado',
+'allegra_desicion'				=> 'Estado Transacción',
+'allegra_code_'					=> 'Sin procesar',
 //
 ''=>''
 );

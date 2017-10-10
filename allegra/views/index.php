@@ -31,17 +31,27 @@ in this Software without prior written authorization from Nullun, SAS.
 <?php
 	$this->table->set_template($cp_table_template);
 	$this->table->set_heading(
-		lang('allegra_checkout_id'),
+		lang('allegra_id'),
+		lang('allegra_screen_name'),
 		lang('allegra_date'),
+		lang('allegra_quantity'),
+		lang('allegra_price'),
+		lang('allegra_price_reported'),		
 		lang('allegra_event'),
+		lang('allegra_desicion'),
 		form_checkbox('select_all', 'true', FALSE, 'class="toggle_all" id="select_all"'));
 
 	foreach($transactions as $transaction)
 	{
 		$this->table->add_row(
 				'<a href="'.$transaction['edit_link'].'">'.$transaction['allegra_id'].'</a>',
+				'<a href="'.$transaction['screen_name_url'].'" target="_blank">'.$transaction['screen_name'].'</a>',
 				$transaction['allegra_date'],
+				$transaction['allegra_quantity'],
+				'$ '.$transaction['allegra_price'],
+				(is_null ($transaction['allegra_price_reported']) == TRUE) ? lang('allegra_price_reported_null') : '$ '.$transaction['allegra_price_reported'],
 				'<a href="'.$transaction['url_title'].'" target="_blank">'.$transaction['title'].'</a>',
+				lang('allegra_code_'.$transaction['desicion']),
 				form_checkbox($transaction['toggle'])
 			);
 	}
