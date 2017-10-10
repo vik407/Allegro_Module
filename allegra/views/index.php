@@ -39,9 +39,9 @@ in this Software without prior written authorization from Nullun, SAS.
 	foreach($transactions as $transaction)
 	{
 		$this->table->add_row(
-				'<a href="'.$transaction['edit_link'].'">'.$transaction['allegra_checkout_id'].'</a>',
+				'<a href="'.$transaction['edit_link'].'">'.$transaction['allegra_id'].'</a>',
 				$transaction['allegra_date'],
-				'<a href="'.$transaction['allegra_event'].'" target="_blank">'.$transaction['allegra_event'].'</a>',
+				'<a href="'.$transaction['url_title'].'" target="_blank">'.$transaction['title'].'</a>',
 				form_checkbox($transaction['toggle'])
 			);
 	}

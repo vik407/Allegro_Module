@@ -84,15 +84,22 @@ class Allegra_mcp {
 		{
 		    $rownum = 0;
 		}
-
-		ee()->db->order_by("allegra_id", "desc");
-		$query = ee()->db->get('allegra_transaction', $this->perpage, $rownum);
+		$query = ee()->db->select('t.allegra_id, t.allegra_date, t.allegra_quantity, t.allegra_price, c.title,	c.url_title, m.screen_name,	m.email, r.desicion')
+		    ->from('allegra_response r')
+			->join('allegra_transaction t', 'r.req_reference_number = t.allegra_id', 'right')
+			->join('channel_titles c', 't.allegra_event = c.entry_id', 'left')
+			->join('members m', 't.member_id = m.member_id', 'left')
+		    ->limit($this->perpage)
+			->offset($rownum)
+		    ->order_by('t.allegra_id', 'desc')
+		    ->get();
 		
 		foreach($query->result_array() as $row)
 		{
-			$vars['transactions'][$row['allegra_id']]['allegra_checkout_id'] = $row['allegra_checkout_id'];
+			$vars['transactions'][$row['allegra_id']]['allegra_id'] = $row['allegra_id'];
 			$vars['transactions'][$row['allegra_id']]['allegra_date'] = $row['allegra_date'];
-			$vars['transactions'][$row['allegra_id']]['allegra_event'] = ee()->config->item('site_url').ee()->config->item('product_template').'/'.$row['allegra_event'];
+			$vars['transactions'][$row['allegra_id']]['title'] = $row['title'];
+			$vars['transactions'][$row['allegra_id']]['url_title'] = ee()->config->item('site_url').ee()->config->item('product_template').'/'.$row['url_title'];
 			$vars['transactions'][$row['allegra_id']]['edit_link'] = BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra'.AMP.'method=edit_transaction'.AMP.'transaction_id='.$row['allegra_id'];
 			// Toggle checkbox
 			$vars['transactions'][$row['allegra_id']]['toggle'] = array(

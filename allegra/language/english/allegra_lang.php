@@ -32,9 +32,13 @@ $lang = array(
 'allegra_config' 				=> 'Module Configuration',
 'edit_transaction' 				=> 'Editar Transacción',
 'delete_transaction' 			=> 'Eliminar Transacción',
-'allegra_checkout_id'			=> 'Transacción ID',
-'allegra_date'					=> 'Fecha transacción en sitio',
-'allegra_event'					=> 'Nombre del evento',
+'allegra_checkout_id'			=> '#',
+'allegra_date'					=> 'Fecha Transacción',
+'allegra_member'				=> 'Usuario',
+'allegra_event'					=> 'Evento',
+'allegra_tickets'				=> 'Tiquetes',
+'allegra_ammount'				=> 'Costo',
+'allegra_state'					=> 'Estado Transacción',
 //
 ''=>''
 );
