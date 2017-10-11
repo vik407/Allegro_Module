@@ -31,7 +31,7 @@ class Allegra_mcp {
 	{
 	    ee()->cp->set_right_nav(array(
 	        'Transactions'  => BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'
-	            .AMP.'module=allegra'.AMP.'method=allegra_browse',
+	            .AMP.'module=allegra'.AMP.'method=index',
 	        'Allegra Platform'  => 'https://allegraplatform.com/AllegraPlatform/faces/login.xhtml',
 	    ));
 	}
@@ -42,17 +42,26 @@ class Allegra_mcp {
 	    ee()->load->library('javascript');
 	    ee()->load->library('table');
 	    ee()->load->helper('form');
+		ee()->load->library('pagination');
 
 	    ee()->view->cp_page_title = lang('allegra_module_name');
 
-	    $vars['action_url'] = 'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra'.AMP.'method=allegra_browse';
+	    $vars['action_url'] = 'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra'.AMP.'method=edit_transaction';
 	    $vars['form_hidden'] = NULL;
 	    $vars['transactions'] = array();
 
 	    $vars['options'] = array(
-	        'edit'  => lang('edit_transaction'),
-	        'delete'    => lang('delete_transaction')
+	        'view'    => lang('view_transaction'),
+			'edit'  => lang('edit_transaction')
 	    );
+		
+		//  Check for pagination
+		$total = ee()->db->count_all('allegra_transaction');
+		
+		if ( ! $rownum = ee()->input->get_post('rownum'))
+		{
+		    $rownum = 0;
+		}
 		
 		// Add javascript
 
@@ -77,13 +86,6 @@ class Allegra_mcp {
 			
 		ee()->javascript->compile();
 		
-		//  Check for pagination
-		$total = ee()->db->count_all('allegra_transaction');
-		
-		if ( ! $rownum = ee()->input->get_post('rownum'))
-		{
-		    $rownum = 0;
-		}
 		$query = ee()->db->select('t.allegra_id, t.allegra_date, t.allegra_quantity, t.allegra_price, c.title,	c.url_title, m.member_id, m.screen_name, m.email, r.desicion, r.req_amount')
 		    ->from('allegra_response r')
 			->join('allegra_transaction t', 'r.req_reference_number = t.allegra_id', 'right')
@@ -108,18 +110,55 @@ class Allegra_mcp {
 			$vars['transactions'][$row['allegra_id']]['desicion'] = $row['desicion'];
 			$vars['transactions'][$row['allegra_id']]['url_title'] = ee()->config->item('site_url').ee()->config->item('product_template').'/'.$row['url_title'];
 			$vars['transactions'][$row['allegra_id']]['edit_link'] = BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra'.AMP.'method=edit_transaction'.AMP.'transaction_id='.$row['allegra_id'];
-			// Toggle checkbox
-			$vars['transactions'][$row['allegra_id']]['toggle'] = array(
-															'name'		=> 'toggle[]',
-															'id'		=> 'edit_box_'.$row['allegra_id'],
-															'value'		=> $row['allegra_id'],
-															'class'		=>'toggle'
-															);
 			
 		}
 		
+	    // Pass the relevant data to the paginate class so it can display the "next page" links
+	    $p_config = $this->pagination_config('index', $total);
+
+	    ee()->pagination->initialize($p_config);
+
+	    $vars['pagination'] = ee()->pagination->create_links();
 		
 		return ee()->load->view('index', $vars, TRUE);
+	}
+	
+	function pagination_config($method, $total_rows)
+	{
+	    // Pass the relevant data to the paginate class
+	    $config['base_url'] = BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra'.AMP.'method='.$method;
+	    $config['total_rows'] = $total_rows;
+	    $config['per_page'] = $this->perpage;
+	    $config['page_query_string'] = TRUE;
+	    $config['query_string_segment'] = 'rownum';
+	    $config['full_tag_open'] = '<p id="paginationLinks">';
+	    $config['full_tag_close'] = '</p>';
+	    $config['prev_link'] = '<img src="'.ee()->cp->cp_theme_url.'images/pagination_prev_button.gif" width="13" height="13" alt="<" />';
+	    $config['next_link'] = '<img src="'.ee()->cp->cp_theme_url.'images/pagination_next_button.gif" width="13" height="13" alt=">" />';
+	    $config['first_link'] = '<img src="'.ee()->cp->cp_theme_url.'images/pagination_first_button.gif" width="13" height="13" alt="< <" />';
+	    $config['last_link'] = '<img src="'.ee()->cp->cp_theme_url.'images/pagination_last_button.gif" width="13" height="13" alt="> >" />';
+
+	    return $config;
+	}
+	
+	function edit_transaction()
+	{
+		ee()->load->config('allegra');
+	    ee()->load->library('javascript');
+	    ee()->load->library('table');
+		ee()->load->helper('form');
+		if (ee()->input->get('iSortCol_0') !== FALSE)
+		
+		
+		ee()->cp->set_breadcrumb(BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra', lang('allegra_module_name'));
+		
+		$vars['action_url'] = 'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=download'.AMP.'method=add_downloads';
+		
+		ee()->view->cp_page_title = lang('allegra_module_name');
+		
+		$vars['form_hidden'] = NULL;
+		
+		return ee()->load->view('edit_transaction', $vars, TRUE);
 	}
 
 }

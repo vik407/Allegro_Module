@@ -27,47 +27,6 @@ in this Software without prior written authorization from Nullun, SAS.
 <div class="moduleHeader">
 	<a href="https://allegra.global/plataforma/index.html"><img src="https://allegra.global/plataforma/images/logo-alegra.png" alt="allegra platform enterprises" width="160"/></a>
 </div>
-<?php if (count($transactions) > 0): ?>
 
-<?php
-	$this->table->set_template($cp_table_template);
-	$this->table->set_heading(
-		lang('allegra_id'),
-		lang('allegra_event'),
-		lang('allegra_screen_name'),
-		lang('allegra_date'),
-		lang('allegra_quantity'),
-		lang('allegra_price'),
-		lang('allegra_price_reported'),		
-		lang('allegra_desicion'),
-		lang('allegra_default')
-			);
-
-	foreach($transactions as $transaction)
-	{
-		$this->table->add_row(
-				$transaction['allegra_id'],
-				'<a href="'.$transaction['url_title'].'" target="_blank">'.$transaction['title'].'</a>',
-				'<a href="'.$transaction['screen_name_url'].'" target="_blank">'.$transaction['screen_name'].'</a>',
-				$transaction['allegra_date'],
-				$transaction['allegra_quantity'],
-				'$ '.$transaction['allegra_price'],
-				(is_null ($transaction['allegra_price_reported']) == TRUE) ? lang('allegra_price_reported_null') : '$ '.$transaction['allegra_price_reported'],
-				lang('allegra_code_'.$transaction['desicion']),
-				'<button><a href="'.$transaction['edit_link'].'">'.lang('view_transaction').'</a></button>'
-			);
-	}
-
-echo $this->table->generate();
-
-?>
-
-<div class="tableFooter">
-	<span class="js-hide"><?=$pagination?></span>	
-	<span class="pagination" id="filter_pagination"></span>
-</div>
-
-<?php else: ?>
-<?=lang('no_matching_transactions')?>
-<?php endif; ?>
-
+<pre><?= print_r($_POST);?></pre>
+<pre><?= print_r($_GET);?></pre>
