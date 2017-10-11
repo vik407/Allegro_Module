@@ -21,7 +21,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Except as contained in this notice, the name of EllisLab, Inc. shall not be
 used in advertising or otherwise to promote the sale, use or other dealings
-in this Software without prior written authorization from EllisLab, Inc.
+in this Software without prior written authorization from Nullun, SAS.
 */
 
 class Allegra_upd {

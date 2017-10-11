@@ -54,7 +54,7 @@ in this Software without prior written authorization from Nullun, SAS.
 				'$ '.$transaction['allegra_price'],
 				(is_null ($transaction['allegra_price_reported']) == TRUE) ? lang('allegra_price_reported_null') : '$ '.$transaction['allegra_price_reported'],
 				lang('allegra_code_'.$transaction['desicion']),
-				'<button><a href="'.$transaction['edit_link'].'">'.lang('view_transaction').'</a></button>'
+				'<span class="button"><a href="'.$transaction['edit_link'].'" class="submit" style="color:#fff;">'.lang('view_transaction').'</a></span>'
 			);
 	}
 

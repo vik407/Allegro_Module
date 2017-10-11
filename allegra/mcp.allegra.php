@@ -63,29 +63,6 @@ class Allegra_mcp {
 		    $rownum = 0;
 		}
 		
-		// Add javascript
-
-		ee()->cp->add_js_script(array('plugin' => 'dataTables'));
-
-
-		ee()->javascript->output(array(
-				'$(".toggle_all").toggle(
-					function(){
-						$("input.toggle").each(function() {
-							this.checked = true;
-						});
-					}, function (){
-						var checked_status = this.checked;
-						$("input.toggle").each(function() {
-							this.checked = false;
-						});
-					}
-				);'
-			)
-		);
-			
-		ee()->javascript->compile();
-		
 		$query = ee()->db->select('t.allegra_id, t.allegra_date, t.allegra_quantity, t.allegra_price, c.title,	c.url_title, m.member_id, m.screen_name, m.email, r.desicion, r.req_amount')
 		    ->from('allegra_response r')
 			->join('allegra_transaction t', 'r.req_reference_number = t.allegra_id', 'right')
@@ -109,7 +86,7 @@ class Allegra_mcp {
 			$vars['transactions'][$row['allegra_id']]['title'] = $row['title'];
 			$vars['transactions'][$row['allegra_id']]['desicion'] = $row['desicion'];
 			$vars['transactions'][$row['allegra_id']]['url_title'] = ee()->config->item('site_url').ee()->config->item('product_template').'/'.$row['url_title'];
-			$vars['transactions'][$row['allegra_id']]['edit_link'] = BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra'.AMP.'method=edit_transaction'.AMP.'transaction_id='.$row['allegra_id'];
+			$vars['transactions'][$row['allegra_id']]['edit_link'] = BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra'.AMP.'method=view_transaction'.AMP.'transaction_id='.$row['allegra_id'];
 			
 		}
 		
@@ -141,24 +118,59 @@ class Allegra_mcp {
 	    return $config;
 	}
 	
-	function edit_transaction()
+	function view_transaction()
 	{
 		ee()->load->config('allegra');
 	    ee()->load->library('javascript');
 	    ee()->load->library('table');
 		ee()->load->helper('form');
-		if (ee()->input->get('iSortCol_0') !== FALSE)
+		if (ee()->input->get('transaction_id') !== FALSE){
+			$transaction_id = ee()->input->get('transaction_id');
+				
+				$query = ee()->db->select('t.allegra_id, t.allegra_checkout_id, t.allegra_date, t.allegra_quantity, c.title, m.member_id, m.screen_name, m.email, r.desicion, r.req_amount, r.req_bill_to_forename, r.req_bill_to_surname, r.req_merchant_defined_data1, r.req_bill_to_phone, r.req_bill_to_address_line1')
+				    ->from('allegra_response r')
+					->join('allegra_transaction t', 'r.req_reference_number = t.allegra_id', 'right')
+					->join('channel_titles c', 't.allegra_event = c.entry_id', 'left')
+					->join('members m', 't.member_id = m.member_id', 'left')
+					->where(array(
+				        't.allegra_id' => $transaction_id,
+				    	))
+				    ->limit('1')
+				    ->order_by('t.allegra_id', 'desc')
+				    ->get();
+		
+				foreach($query->result_array() as $row)
+				{
+					ee()->view->cp_page_title = lang('allegra_detail_transaction_title');
+					
+					$vars['transactions'][$row['allegra_id']]['allegra_id'] = $row['allegra_id'];
+					$vars['transactions'][$row['allegra_id']]['screen_name_url'] = ee()->config->item('site_url').'member/'.$row['member_id'];
+					$vars['transactions'][$row['allegra_id']]['allegra_checkout_id'] = $row['allegra_checkout_id'];
+					$vars['transactions'][$row['allegra_id']]['screen_name'] = $row['screen_name'];
+					$vars['transactions'][$row['allegra_id']]['title'] = $row['title'];
+					$vars['transactions'][$row['allegra_id']]['req_bill_to_forename'] = $row['req_bill_to_forename'];
+					$vars['transactions'][$row['allegra_id']]['req_bill_to_surname'] = $row['req_bill_to_surname'];
+					$vars['transactions'][$row['allegra_id']]['req_bill_to_phone'] = $row['req_bill_to_phone'];
+					$vars['transactions'][$row['allegra_id']]['allegra_price_reported'] = $row['req_amount'];
+					$vars['transactions'][$row['allegra_id']]['allegra_quantity'] = $row['allegra_quantity'];
+					$vars['transactions'][$row['allegra_id']]['allegra_date'] = $row['allegra_date'];
+					$vars['transactions'][$row['allegra_id']]['title'] = $row['title'];
+					$vars['transactions'][$row['allegra_id']]['desicion'] = $row['desicion'];	
+					$vars['transactions'][$row['allegra_id']]['req_bill_to_address_line'] = $row['req_bill_to_address_line1'];				
+			
+				}
+		
+				$vars['action_url'] = 'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=download'.AMP.'method=add_downloads';
 		
 		
-		ee()->cp->set_breadcrumb(BASE.AMP.'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=allegra', lang('allegra_module_name'));
+				$vars['form_hidden'] = NULL;
 		
-		$vars['action_url'] = 'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=download'.AMP.'method=add_downloads';
-		
-		ee()->view->cp_page_title = lang('allegra_module_name');
-		
-		$vars['form_hidden'] = NULL;
-		
-		return ee()->load->view('edit_transaction', $vars, TRUE);
+				return ee()->load->view('view_transaction', $vars, TRUE);
+		}else{
+			ee()->view->cp_page_title = 'ERROR NO ENTRY ID';
+			$vars['form_hidden'] = NULL;
+			return ee()->load->view('view_transaction', $vars, TRUE);
+		}
 	}
 
 }

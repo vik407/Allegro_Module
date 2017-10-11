@@ -28,6 +28,7 @@ in this Software without prior written authorization from EllisLab, Inc.
 $lang = array(
 
 'allegra_default'				=> '&nbsp;',
+'allegra_back'					=> 'Regresar',
 'allegra_module_name' 			=> 'Allegra platform enterprises',
 'allegra_module_description' 	=> 'Integrate the Allegra Platform integration to payments', 
 'allegra_config' 				=> 'Module Configuration',
@@ -49,6 +50,7 @@ $lang = array(
 'allegra_code_CANCEL'			=> 'Cancelada por el usuario',
 'submit'						=> 'Enviar',
 'no_matching_transactions'		=> 'No se encontraron transacciones para mostrar',
+'allegra_detail_transaction_title' => 'Detalles transación :',
 //
 ''=>''
 );
