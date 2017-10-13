@@ -1,0 +1,410 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ch",
+				"checkout-content"
+			],
+			[
+				"col",
+				"col-md-6"
+			],
+			[
+				"te",
+				"text-center"
+			],
+			[
+				"N",
+				"NOSOTROS"
+			],
+			[
+				"cold",
+				"col-md-6"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"bo",
+				"bold"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"tran",
+				"transition"
+			],
+			[
+				"n",
+				"none"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"buy",
+				"buy-icon"
+			],
+			[
+				"i",
+				"if\tif"
+			],
+			[
+				"da",
+				"date"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"event",
+				"eventsCalendar-day"
+			],
+			[
+				"borde",
+				"border-radius"
+			],
+			[
+				"events",
+				"eventsCalendar-slider"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"bord",
+				"border"
+			],
+			[
+				"in",
+				"inherit"
+			],
+			[
+				"eventCalenda",
+				"eventCalendarDefault"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"u",
+				"uppercase"
+			],
+			[
+				"tex",
+				"text-transform"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"padding",
+				"padding-right"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "mcp.allegra.php",
+			"settings":
+			{
+				"buffer_size": 8546,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "mod.allegra.php",
+			"settings":
+			{
+				"buffer_size": 1399,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 412.0
+	},
+	"console":
+	{
+		"height": 131.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/vik/Documents/GitHub/Allegro_Module",
+		"/Users/vik/Documents/GitHub/Allegro_Module/allegra"
+	],
+	"file_history":
+	[
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/inc_meetings_related.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/inc_meetings_index.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/system/expressionengine/third_party/json_operations/pi.json_operations.php",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/contenido.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/inc_footer.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/inc_navbar.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/inc_side_calendar.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/trabaja_con_nosotros.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/eventos_privados.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/Error_404.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/detalle_evento.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/quienes_somos.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/eventos_privados_formulario.html",
+		"/Users/vik/Documents/work/socialcolectivo/Backups/EE-2/themes/site_themes/socialcolectivo/default_site/site.group/inc_head.html",
+		"/Users/vik/Documents/work/socialcolectivo/dev/gulpfile.js",
+		"/Users/vik/Documents/work/socialcolectivo/dev/src/js/notify.min.js",
+		"/Users/vik/Documents/work/socialcolectivo/dev/src/sass/notify.min.js",
+		"/Users/vik/Documents/work/socialcolectivo/dev/dist/vendor/eventCalendar/js/jquery.eventCalendar.min.js",
+		"/Volumes/Files/Torrents/Adobe Lightroom 6.10.1/XFORCE/Crack-OSX/disable_activation_osx",
+		"/Users/vik/Documents/work/socialcolectivo/dev/src/views/msg.registro-ok.pug",
+		"/Users/vik/Documents/work/socialcolectivo/dev/src/views/index.pug",
+		"/Users/vik/Documents/work/socialcolectivo/dev/src/sass/custom.scss",
+		"/Users/vik/Documents/work/socialcolectivo/dev/dist/locale.es.json",
+		"/Users/vik/Documents/work/socialcolectivo/dev/src/sass/style.scss",
+		"/Users/vik/Documents/work/socialcolectivo/dev/src/vendor/eventCalendar/js/jquery.eventCalendar.js",
+		"/Users/vik/Documents/work/socialcolectivo/dev/dist/css/style.css",
+		"/Users/vik/Documents/work/socialcolectivo/dev/src/views/standard.pug",
+		"/Users/vik/Documents/work/socialcolectivo/dev/src/vendor/eventCalendar/css/eventCalendar_theme_responsive.css",
+		"/Users/vik/Documents/work/socialcolectivo/dev/src/views/inc/head.pug",
+		"/Users/vik/Documents/work/socialcolectivo/dev/dist/views/inc/2Expression/head.html",
+		"/Users/vik/Documents/work/socialcolectivo/dev/dist/events.json",
+		"/Users/vik/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "mcp.allegra.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8546,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1348,
+								76
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "mod.allegra.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1399,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								943,
+								943
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "allegra.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 277.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

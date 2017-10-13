@@ -27,14 +27,17 @@ in this Software without prior written authorization from Nullun, SAS.
 
 class Allegra {
 
-    var $return_data    = '';
-
-    function form(){
-
-    	if (($entry_id = ee()->TMPL->fetch_param('entry_id')) === FALSE) return;
-
+	public function __construct($params)
+    {
+     	// Load Configuration
+     	ee()->load->config('allegra');
+     	ee()->config->item('allegra_profileid');
+     	ee()->config->item('allegra_secretkey');     	
+     	// $params array: type, data, 
 
     }
+
+	// --------------------------------------------------------------------
 
 	/**
 	 * Setup forms
@@ -55,7 +58,7 @@ class Allegra {
 			'id'			=> (ee()->TMPL->form_id == '') ? $form_id : ee()->TMPL->form_id,
 			'class'			=> ee()->TMPL->form_class,
 			'hidden_fields'	=> array(
-				'ACT'				=> ee()->functions->fetch_action_id('Allegra', 'create_transaction'),
+				'ACT'				=> ee()->functions->fetch_action_id('Email', 'send_email'),
 				'RET'				=> ee()->TMPL->fetch_param('return', ''),
 				'URI'				=> (ee()->uri->uri_string == '') ? 'index' : ee()->uri->uri_string,
 				'recipients'		=> base64_encode($recipients),
@@ -85,3 +88,5 @@ class Allegra {
 	}
 
 }
+
+// EOF
