@@ -25,5 +25,7 @@ in this Software without prior written authorization from Nullun, SAS.
 */
 
 class Allegra_tab {
-	
+    //Load external resources
+    ee()->load->library('table');
+    ee()->load->helper('form');
 }

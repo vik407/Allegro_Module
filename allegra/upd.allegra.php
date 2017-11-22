@@ -21,7 +21,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Except as contained in this notice, the name of EllisLab, Inc. shall not be
 used in advertising or otherwise to promote the sale, use or other dealings
-in this Software without prior written authorization from Nullun, SAS.
+in this Software without prior written authorization from EllisLab, Inc.
 */
 
 class Allegra_upd {
@@ -52,42 +52,21 @@ class Allegra_upd {
 		
 		$data = array(
 		    'class'     => 'Allegra' ,
-		    'method'    => 'allegra_create_transaction'
+		    'method'    => 'create_transaction'
 		);
 
 		ee()->db->insert('actions', $data);
 		
 		$data = array(
 		    'class'     => 'Allegra' ,
-		    'method'    => 'allegra_edit_transaction'
+		    'method'    => 'search_transaction'
 		);
 
 		ee()->db->insert('actions', $data);
 		
 		$data = array(
 		    'class'     => 'Allegra' ,
-		    'method'    => 'allegra_search_transaction'
-		);
-
-		ee()->db->insert('actions', $data);
-		
-		$data = array(
-		    'class'     => 'Allegra' ,
-		    'method'    => 'allegra_create_profile'
-		);
-		
-		ee()->db->insert('actions', $data);
-		
-		$data = array(
-		    'class'     => 'Allegra' ,
-		    'method'    => 'allegra_edit_profile'
-		);
-
-		ee()->db->insert('actions', $data);
-		
-		$data = array(
-		    'class'     => 'Allegra' ,
-		    'method'    => 'allegra_response'
+		    'method'    => 'receive_response'
 		);
 
 		ee()->db->insert('actions', $data);
@@ -337,6 +316,41 @@ class Allegra_upd {
 		ee()->dbforge->add_key('transaction_id', TRUE);
 
 		ee()->dbforge->create_table('allegra_response');
+		
+		unset($fields);
+		
+		$fields = array(
+	        'merchant_id' => array(
+	                'type' => 'int',
+					'constraint' => '1',
+					'default' => '1',
+	        ),
+	        'merchant_url' => array(
+	                'type' => 'VARCHAR',
+					'constraint' => '150',
+					'null' => FALSE,
+	        ),
+	        'profile_id' => array(
+	                'type' => 'VARCHAR',
+					'constraint' => '50',
+					'null' => FALSE,
+	        ),
+	        'access_key' => array(
+	                'type' => 'VARCHAR',
+					'constraint' => '50',
+					'null' => FALSE,
+	        ),
+	        'secret_key' => array(
+	                'type' => 'VARCHAR',
+					'constraint' => '300',
+					'null' => FALSE,
+	        ),
+		);
+		
+		ee()->dbforge->add_field($fields);
+		ee()->dbforge->add_key('merchant_id', TRUE);
+
+		ee()->dbforge->create_table('allegra_profile');
 		
 		ee()->load->library('layout');
 		    ee()->layout->add_layout_tabs($this->tabs(), 'allegra');

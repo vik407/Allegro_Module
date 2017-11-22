@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
-Copyright (C) 2008 - 2017 Nullun, SAS.
+Copyright (C) 2010 - 2011 EllisLab, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,9 +20,9 @@ ELLISLAB, INC. BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Except as contained in this notice, the name of Nullun, SAS. shall not be
+Except as contained in this notice, the name of EllisLab, Inc. shall not be
 used in advertising or otherwise to promote the sale, use or other dealings
-in this Software without prior written authorization from Nullun, SAS.
+in this Software without prior written authorization from EllisLab, Inc.
 */
 class Allegra_mcp {
 	var $perpage = 30;
